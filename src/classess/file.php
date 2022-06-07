@@ -1,7 +1,6 @@
 <?php
     namespace ITEC\DAW\PROG\FILE;
     use Exception;
-
     class file{
         private string $filename;
         private $file;

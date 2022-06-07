@@ -1,8 +1,7 @@
 {
     "require": {
         "unicframework/csv-parser": "^1.1",
-        "symfony/yaml": "^6.1",
-        "me-io/php-ini-parser": "^1.0"
+        "symfony/yaml": "^6.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
