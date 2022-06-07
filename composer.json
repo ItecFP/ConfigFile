@@ -6,12 +6,12 @@
     },
     "autoload": {
         "psr-4": {
-            "ITEC\\PRESENCIAL\\DAW\\PROG\\HTMLElements\\": "src/"
+            "ITEC\\DAW\\PROG\\CONFIGFILE\\": "src/classess/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ITEC\\PRESENCIAL\\DAW\\PROG\\HTMLElements\\": "src/"
+            "ITEC\\DAW\\PROG\\CONFIGFILE\\": "src/classess/"
         }
     }
 }
