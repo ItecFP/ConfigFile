@@ -9,7 +9,8 @@
     },
     "autoload": {
         "psr-4": {
-            "ITEC\\DAW\\PROG\\CONFIGFILE\\": "src/classess/"
+            "ITEC\\DAW\\PROG\\CONFIGFILE\\": "src/classess/",
+            "ITEC\\DAW\\PROG\\FILE\\": "src/classess/"
         }
     },
     "autoload-dev": {

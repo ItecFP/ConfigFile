@@ -1,1 +1,4 @@
 vendor
+logs
+tmp
+.phpunit.result.cache
