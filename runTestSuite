@@ -1,0 +1,2 @@
+#!/bin/sh
+./vendor/bin/phpunit --testdox-html ./logs/tests/htmlelements_reportSuite.html --coverage-html ./logs/coverages/

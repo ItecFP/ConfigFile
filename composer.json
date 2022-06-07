@@ -1,0 +1,17 @@
+{
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ITEC\\PRESENCIAL\\DAW\\PROG\\HTMLElements\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ITEC\\PRESENCIAL\\DAW\\PROG\\HTMLElements\\": "src/"
+        }
+    }
+}
