@@ -8,6 +8,8 @@
 
         public function __construct(string $filename){
             $this->filename = $filename;
+            if(!file_exists($this->filename))
+                file_put_contents($this->filename,"");
             $this->content = file_get_contents($this->filename);    
         }
         

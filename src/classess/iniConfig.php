@@ -2,7 +2,6 @@
 namespace ITEC\DAW\PROG\CONFIGFILE;
 use \Exception;
 use ITEC\DAW\PROG\FILE\file;
-use \Ini\Parser;
 
 class iniConfig extends file implements iconfig{
     private array|null $parsed;
@@ -11,17 +10,13 @@ class iniConfig extends file implements iconfig{
     public function __construct(string $filename){
         parent::__construct($filename);
         $this->content = $this->getContent();
-        try {
-            $ini = new Parser();
-            $ini->treat_ini_string = true;
-            $this->parsed = $ini->parse($this->content);
+        try {           
+            $this->parsed =parse_ini_string($this->content);
         } catch (Exception $e) {
             echo ('Unable to parse the INI string:'. $e->getMessage());
         }   
     }
-
     public function addVars(string $name, $value){
-        $this->parsed[$name] = $value;
         $this->content = $this->arr2ini($this->parsed);
         $this->writeFile();
     }
@@ -34,7 +29,7 @@ class iniConfig extends file implements iconfig{
         $this->addVars($name,$value);
     }
     public function readVars(string $name):string{
-        return $this->parsed[$name];
+        return $name==""?"":$this->parsed[$name];
     }
 
     private function arr2ini(array $a, array $parent = array()){
