@@ -22,12 +22,12 @@ class iniConfig extends file implements iconfig{
 
     public function addVars(string $name, $value){
         $this->parsed[$name] = $value;
-        $this->content = Yaml::dump($this->parsed);
+        $this->content = $this->arr2ini($this->parsed);
         $this->writeFile();
     }
     public function removeVars(string $name){
         unset ($this->parsed[$name]);
-        $this->content = Yaml::dump($this->parsed);
+        $this->content = $this->arr2ini($this->parsed);
         $this->writeFile();
     }
     public function modifyVars(string $name,$value){
@@ -35,5 +35,18 @@ class iniConfig extends file implements iconfig{
     }
     public function readVars(string $name):string{
         return $this->parsed[$name];
+    }
+
+    private function arr2ini(array $a, array $parent = array()){
+        $out = '';
+        foreach ($a as $k => $v){
+            if (is_array($v)) {
+                $sec = array_merge((array) $parent, (array) $k);
+                $out .= '[' . join('.', $sec) . ']' . PHP_EOL;
+                $out .= $this->arr2ini($v, $sec);
+            }else
+                $out .= "$k=$v" . PHP_EOL;
+        }
+        return $out;
     }
 }
