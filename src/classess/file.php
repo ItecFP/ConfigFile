@@ -4,8 +4,6 @@
     class file{
         private string $filename;
         private string $content;
-
-
         public function __construct(string $filename){
             $this->filename = $filename;
             if(!file_exists($this->filename))
@@ -13,7 +11,7 @@
             $this->content = file_get_contents($this->filename);    
         }
         
-        public function openOrCreateFile(string $filename):file{
+        public static function openOrCreateFile(string $filename):file{
            return new file($filename);
         }
         public function getContent():string{

@@ -12,15 +12,15 @@ class iniconfigTest extends TestCase{
 
     public function DPtest_iniconfig_parse1(){
         return [
+            "iniunvalorSimple"=>[
+                'coverage',
+                "./tmp/iniconfigSimpleValuetest.ini",
+                "debug"
+            ],
             "inivacio"=>[
                 "",
                 "./tmp/iniconfigtest.ini",
                 ""
-            ],
-            "iniunvalorSimple"=>[
-                'coverage,debug',
-                "./tmp/iniconfigSimpleValuetest.ini",
-                "debug"
             ]
         ];
     }
@@ -31,8 +31,8 @@ class iniconfigTest extends TestCase{
      * @dataProvider DPtest_iniconfig_parse1
      */
     public function test_iniconfig_parse1($esperado, $filename, $name){
-        if ($esperado="") 
-            $this->expectException('Unable to parse the INI string:'."Need ini content to parse.");
+        //if ($esperado=="") 
+            //$this->expectException('Unable to parse the INI string:');
         $iniConfig = new iniConfig($filename);
         $this->assertEquals($esperado,$iniConfig->readVars($name));
     }

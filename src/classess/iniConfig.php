@@ -9,14 +9,11 @@ class iniConfig extends file implements iconfig{
 
     public function __construct(string $filename){
         parent::__construct($filename);
-        $this->content = $this->getContent();
-        try {           
-            $this->parsed =parse_ini_string($this->content);
-        } catch (Exception $e) {
-            echo ('Unable to parse the INI string:'. $e->getMessage());
-        }   
+        $this->content = $this->getContent();       
+        $this->parsed =parse_ini_string($this->content);
     }
     public function addVars(string $name, $value){
+        $this->parsed[$name]=$value;
         $this->content = $this->arr2ini($this->parsed);
         $this->writeFile();
     }
@@ -29,7 +26,13 @@ class iniConfig extends file implements iconfig{
         $this->addVars($name,$value);
     }
     public function readVars(string $name):string{
-        return $name==""?"":$this->parsed[$name];
+        return $name==""?
+            "":
+            (
+                (isset($this->parsed[$name]))?
+                    $this->parsed[$name]:
+                    ""
+            );
     }
 
     private function arr2ini(array $a, array $parent = array()){
